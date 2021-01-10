@@ -8,11 +8,11 @@
 !/.bin/
 !/doc/
 
-!/.config/*
-!/.bash/*
-!/.tmux/*
-!/.vim/*
-!/.zsh/*
+!/.bash/**
+!/.config/**
+!/.tmux/**
+!/.vim/**
+!/.zsh/**
 
 !/README.md
 !/LICENSE
