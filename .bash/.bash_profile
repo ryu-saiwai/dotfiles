@@ -1,0 +1,2 @@
+# load .bashrc
+source ~/.bashrc

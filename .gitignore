@@ -2,16 +2,29 @@
 # all ignore -----------------------------------------------------------------------
 /*
 /.**
+.DS_Store
+
+
 
 # .gitignoreは上から解釈されるので、管理対象のファイルをホワイトリストとして追記
 # not ignore -----------------------------------------------------------------------
 !/.bin/
 !/doc/
 
+!/.bash/
 !/.bash/**
+
+!/.config/
 !/.config/**
+/.config/.bashrce
+/.config/**.DS_Store
+/.config/**/**.DS_Store
+/.config/karabiner/automatic_backups/**
+!/.tmux/
 !/.tmux/**
+!/.vim/
 !/.vim/**
+!/.zsh/
 !/.zsh/**
 
 !/README.md
