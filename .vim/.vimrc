@@ -8,18 +8,18 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/monomum/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/monomum/.cache/dein')
+if dein#load_state('~/.cache/dein')
   " XDG base direcory compartible
   let g:dein#cache_directory = $HOME . '/.cache/dein'
 
-  call dein#begin('/Users/monomum/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/monomum/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here like this:
   "call dein#add('Shougo/neosnippet.vim')

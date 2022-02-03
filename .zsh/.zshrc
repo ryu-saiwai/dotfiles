@@ -12,26 +12,21 @@ export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 
 # Alias Setting
+# --------------------------------------------------------------------------------------------
 alias o='open'
 alias ls='gls -alv --color=auto'
 alias rm='rm -ir'
 
 # Shortcut Alias
-alias cdvm='cd ~/Documents/VM/' >> .bashrce
-#alias cdsls='cd ~/Documents/VM/serverless' >> .bashrce
-#alias cdfr='cd ~/Documents/VM/frame.localsite/' >> .bashrce
+# --------------------------------------------------------------------------------------------
+alias cdvm='cd ~/Documents/VM/' >> .zprofile
 
 
 ## 重複パスを登録しない
 typeset -U path cdpath fpath manpath
 
-setopt AUTO_CD
-cdpath=(.. ~ ~/Documents/Dropbox/docs/template)
-cdpath=(.. ~ ~/local/lib/node_modules/typescript)
-cdpath=(.. ~ ~/local/lib/node_modules/coffee-script)
-cdpath=(.. ~ ~/Documents/Dropbox/docs/workspace)
-
 ## pathを設定
+# --------------------------------------------------------------------------------------------
 export PATH="/sbin:$PATH"
 
 # for shell scripts / scripts
@@ -40,57 +35,76 @@ export PATH=~/Documents/scripts:$PATH
 export PATH=~/Documents/shell-scripts/cd:$PATH
 export PATH=~/Documents/shell-scripts/tmuxinator:$PATH
 
-
-# for zsh-completions
-fpath=(/path/to/homebrew/share/zsh-completions $fpath)
-
-autoload -U compinit
-compinit -u
+export SHELL=/usr/local/bin/zsh
+export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # for Homebrew
+# --------------------------------------------------------------------------------------------
+export PATH=/opt/homebrew/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 
 # for anyenv
+# --------------------------------------------------------------------------------------------
 eval "$(anyenv init -)"
 
 # for phpenv
+# --------------------------------------------------------------------------------------------
 export PATH="$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
 
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
+export PATH="/opt/homebrew/opt/bzip2/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+export PATH="/opt/homebrew/opt/krb5/bin:$PATH"
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
+export PATH="/opt/homebrew/opt/tidy-html5/lib:$PATH"
+
+# PKG_CONFIG_PATH
+export PKG_CONFIG_PATH="/opt/homebrew/opt/krb5/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/icu4c/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libedit/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libjpeg/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libpng/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libxml2/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libzip/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/oniguruma/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/tidy-html5/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# PHP_RPATHS
+export PHP_RPATHS="/opt/homebrew/opt/zlib/lib /opt/homebrew/opt/bzip2/lib /opt/homebrew/opt/curl/lib /opt/homebrew/opt/libiconv/lib /opt/homebrew/opt/libedit/lib"
+
+# PHP_BUILD_CONFIGURE_OPTS
+export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv) --with-tidy=$(brew --prefix tidy-html5) --with-external-pcre=$(brew --prefix pcre2) --with-zip --enable-intl --with-pear"
+
+export CFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
+export CXXFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
+
 # for pyenv
+# --------------------------------------------------------------------------------------------
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
  #for tmux
+ # --------------------------------------------------------------------------------------------
 export TERM=xterm-256color
-
 export EDITOR=/usr/bin/vim
+
+# for zsh-completions
+# --------------------------------------------------------------------------------------------
+fpath=(/path/to/homebrew/share/zsh-completions $fpath)
+
+autoload -U compinit
+compinit -u
 
 if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 fi
 
-export SHELL=/usr/local/bin/zsh
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
-# for Android Debug
-export PATH=$PATH:~/Library/Android/sdk/platform-tools
-
-#For OpenSSL
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
-# For krb5
-export PKG_CONFIG_PATH="/usr/local/opt/krb5/lib/pkgconfig"
-export LDFLAGS="-L/usr/local/opt/krb5/lib"
-export CPPFLAGS="-I/usr/local/opt/krb5/include"
-export PATH="/usr/local/opt/krb5/bin:$PATH"
-export PATH="/usr/local/opt/krb5/sbin:$PATH"
 
 
