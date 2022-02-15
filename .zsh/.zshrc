@@ -12,13 +12,13 @@ export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 
 # Alias Setting
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 alias o='open'
 alias ls='gls -alv --color=auto'
 alias rm='rm -ir'
 
 # Shortcut Alias
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 alias cdvm='cd ~/Documents/VM/' >> .zprofile
 
 
@@ -26,7 +26,7 @@ alias cdvm='cd ~/Documents/VM/' >> .zprofile
 typeset -U path cdpath fpath manpath
 
 ## pathを設定
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 export PATH="/sbin:$PATH"
 
 # for shell scripts / scripts
@@ -39,17 +39,17 @@ export SHELL=/usr/local/bin/zsh
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 # for Homebrew
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 
 # for anyenv
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 eval "$(anyenv init -)"
 
 # for phpenv
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 export PATH="$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
 
@@ -84,19 +84,32 @@ export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=
 export CFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
 export CXXFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
 
+# for wordmove (change ruby option)
+# ----------------------------------------------------------------------------------
+export RUBYOPT="--disable=did_you_mean"
+
+
 # for pyenv
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# for rbenv
+# ----------------------------------------------------------------------------------
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
+
+
  #for tmux
- # --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 export TERM=xterm-256color
 export EDITOR=/usr/bin/vim
 
 # for zsh-completions
-# --------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 fpath=(/path/to/homebrew/share/zsh-completions $fpath)
 
 autoload -U compinit
