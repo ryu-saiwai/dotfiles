@@ -38,7 +38,7 @@ export PATH=~/Documents/shell-scripts/tmuxinator:$PATH
 export SHELL=/usr/local/bin/zsh
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-# for Homebrew
+# For Homebrew
 # ----------------------------------------------------------------------------------
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/usr/local/bin:$PATH
@@ -48,7 +48,7 @@ export PATH=/usr/local/sbin:$PATH
 # ----------------------------------------------------------------------------------
 eval "$(anyenv init -)"
 
-# for phpenv
+# For phpenv
 # ----------------------------------------------------------------------------------
 export PATH="$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
@@ -84,18 +84,18 @@ export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=
 export CFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
 export CXXFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
 
-# for wordmove (change ruby option)
+# For wordmove (change ruby option)
 # ----------------------------------------------------------------------------------
 export RUBYOPT="--disable=did_you_mean"
 
 
-# for pyenv
+# For pyenv
 # ----------------------------------------------------------------------------------
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# for rbenv
+# For rbenv
 # ----------------------------------------------------------------------------------
 export RBENV_ROOT="$HOME/.rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
@@ -103,7 +103,7 @@ eval "$(rbenv init -)"
 
 
 
- #for tmux
+# For tmux
 # ----------------------------------------------------------------------------------
 export TERM=xterm-256color
 export EDITOR=/usr/bin/vim
@@ -118,6 +118,11 @@ compinit -u
 if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 fi
+
+# For
+# ----------------------------------------------------------------------------------
+
+alias phinx='vendor/bin/phinx'
 
 
 
