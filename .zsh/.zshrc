@@ -16,6 +16,8 @@ export LSCOLORS=DxGxcxdxCxegedabagacad
 alias o='open'
 alias ls='gls -alv --color=auto'
 alias rm='rm -ir'
+alias python='python3'
+alias pip='pip3'
 
 # Shortcut Alias
 # ----------------------------------------------------------------------------------
@@ -60,7 +62,8 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
 export PATH="/opt/homebrew/opt/krb5/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
-export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
+export PATH="/opt/homebrew/opt/icu4c@76/bin:$PATH"
+export PATH="/opt/homebrew/opt/icu4c@76/sbin:$PATH"
 export PATH="/opt/homebrew/opt/tidy-html5/lib:$PATH"
 
 # PKG_CONFIG_PATH
@@ -83,6 +86,10 @@ export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=
 
 export CFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
 export CXXFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_TRUE=1"
+
+# icu4u
+export LDFLAGS="-L/opt/homebrew/opt/icu4c@76/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/icu4c@76/include"
 
 # For wordmove (change ruby option)
 # ----------------------------------------------------------------------------------
@@ -134,3 +141,9 @@ alias phinx='vendor/bin/phinx'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
