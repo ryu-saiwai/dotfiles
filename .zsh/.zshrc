@@ -3,6 +3,22 @@ export LANG=ja_JP.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# AutoLoad
+# ----------------------------------------------------------------------------------
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+
+fpath=(
+  /opt/homebrew/share/zsh-completions
+  /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  /Users/ryutarosaiwai/.docker/completions
+  $fpath
+)
+
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
+
 # no beep sound
 setopt no_beep
 setopt nolistbeep
@@ -21,15 +37,27 @@ alias pip='pip3'
 
 # Shortcut Alias
 # ----------------------------------------------------------------------------------
-alias cdvm='cd ~/Documents/VM/' >> .zprofile
+alias cdvm='cd ~/Documents/VM/'
 
 
 ## 重複パスを登録しない
 typeset -U path cdpath fpath manpath
 
-## pathを設定
+## pathを設定 (with Homebrew)
 # ----------------------------------------------------------------------------------
-export PATH="/sbin:$PATH"
+typeset -U path PATH
+path=(
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /usr/bin
+  /usr/sbin
+  /bin
+  /sbin
+  /Library/Apple/usr/bin
+)
+
 
 # for shell scripts / scripts
 export PATH=~/Documents/shell-scripts:$PATH
@@ -39,12 +67,6 @@ export PATH=~/Documents/shell-scripts/tmuxinator:$PATH
 
 export SHELL=/usr/local/bin/zsh
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# For Homebrew
-# ----------------------------------------------------------------------------------
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
 
 # for anyenv
 # ----------------------------------------------------------------------------------
@@ -91,59 +113,33 @@ export CXXFLAGS="-Wno-error=implicit-function-declaration -DU_DEFINE_FALSE_AND_T
 export LDFLAGS="-L/opt/homebrew/opt/icu4c@76/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/icu4c@76/include"
 
-# For wordmove (change ruby option)
-# ----------------------------------------------------------------------------------
-export RUBYOPT="--disable=did_you_mean"
-
-
-# For pyenv
-# ----------------------------------------------------------------------------------
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# For rbenv
-# ----------------------------------------------------------------------------------
-export RBENV_ROOT="$HOME/.rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
-
-
-
 # For tmux
 # ----------------------------------------------------------------------------------
 export TERM=xterm-256color
 export EDITOR=/usr/bin/vim
-
-# for zsh-completions
-# ----------------------------------------------------------------------------------
-fpath=(/path/to/homebrew/share/zsh-completions $fpath)
-
-autoload -U compinit
-compinit -u
-
 if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 fi
 
-
-
-# For AWS PortFoward
+# For NVM
 # ----------------------------------------------------------------------------------
-
-
-
-# For phinx
-# ----------------------------------------------------------------------------------
-
-alias phinx='vendor/bin/phinx'
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ryutarosaiwai/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+# For GCP
+# ----------------------------------------------------------------------------------
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
+  source "$HOME/google-cloud-sdk/path.zsh.inc"
+fi
+
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then
+  source "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
+
+# For API key Load
+# ----------------------------------------------------------------------------------
+if [ -f "$HOME/.zsh.keys" ]; then
+  source "$HOME/.zsh.keys"
+fi
