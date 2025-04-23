@@ -26,6 +26,9 @@
 !/.vim/**
 !/.zsh/
 !/.zsh/**
+!/.github/
+!/.github/**
+!.commit_template
 
 !/README.md
 !/LICENSE
