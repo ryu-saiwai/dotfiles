@@ -1,3 +1,5 @@
+# ryu-saiwai dotfiles
+
 
 ## HOW TO INSTALL
 
@@ -16,3 +18,11 @@ ln -sf ~/.dotfiles/.vim/.vimrc ~/.vimrc
 ln -sf ~/.dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 ```
 
+##  key configuration
+
+```bash
+cd ~
+touch .zsh.keys
+vi .zsh.keys
+# add key configuration
+```
